@@ -113,6 +113,14 @@ keys = [
         lazy.spawn("rofi -show drun"),
         desc="Launch DMenu"),
 
+    Key([mod], "space", 
+        lazy.spawn("rofi -show window"),
+        desc="basically alt tabbing"),
+
+    # Print Screen
+    #Key([], "Print", lazy.spawn("gnome-screenshot -i")),
+    #Key([mod,], "Print", lazy.spawn("gnome-screenshot -a")),
+
     # Meda Keys
     #Key([])
 ]
@@ -136,7 +144,7 @@ for i in groups:
 
 layout_theme = {
     "border_width": 2,
-    "border_focus": "EBDBB2"
+    "border_focus": "689D6A"
 }
 
 layouts = [
@@ -200,7 +208,7 @@ screens = [
                 widget.QuickExit(background=colours[0], foreground=colours[1]),
                 widget.Spacer(length=6, background=colours[0]),
             ],
-            32, margin=[20, 20, 0, 20], border_width=10, background="#434C5E00"
+            32, margin=[10, 10, 0, 10], border_width=10, background="#434C5E00"
         ),
     ),
 ]
