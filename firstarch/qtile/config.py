@@ -31,9 +31,8 @@ from libqtile.config import Click, Drag, Group, KeyChord, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
-#GRUVBOX
-# defining colours here because I'm too lazy
-colours = [
+#GRUVBOX colours
+gruvbox_colours = [
     "#282828",# 0 bg
     "#CC241D",# 1 red
     "#98971A",# 2 green
@@ -50,6 +49,26 @@ colours = [
     "#D3869B",# 13 purple
     "#8EC07C",# 14 aqua
     "#EBDBB2",# 15 fg
+]
+
+nord_colours = [
+# I have changed the bg colour to gruvbox's because is looks spicy
+    "#282828",# 0 bg
+    "#3B4252",
+    "#434C5E",
+    "#4C566A",
+    "#D8DEE9",
+    "#E5E9F0",
+    "#ECEFF4",
+    "#8FBCBB",
+    "#88C0D0",
+    "#81A1C1",
+    "#5E81AC",
+    "#BF616A",
+    "#D08770",
+    "#EBCB8B",
+    "#A3BE8C",
+    "#B48EAD"
 ]
 
 mod = "mod4"
@@ -115,7 +134,7 @@ keys = [
 
     Key([mod], "space", 
         lazy.spawn("rofi -show window"),
-        desc="basically alt tabbing"),
+        desc=""),
 
     # Print Screen
     #Key([], "Print", lazy.spawn("gnome-screenshot -i")),
@@ -148,7 +167,7 @@ layout_theme = {
 }
 
 layouts = [
-    layout.Columns(border_focus_stack=['#d75f5f', '#8f3d3d'], margin=10, border_width=2),
+    layout.Columns(border_focus_stack=['#689D6A', '#689D6A'], margin=8, border_width=2),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
@@ -165,7 +184,7 @@ layouts = [
 
 widget_defaults = dict(
     font='Hack',
-    fontsize=15,
+    fontsize=13,
     padding=3,
 )
 extension_defaults = widget_defaults.copy()
@@ -174,11 +193,11 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.Spacer(length=6, background=colours[0]),
-                widget.CurrentLayout(background=colours[0]), 
-                widget.Spacer(length=6, background=colours[0]),
+                widget.Spacer(length=6, background=nord_colours[0]),
+                widget.CurrentLayout(background=nord_colours[0]),
+                widget.Spacer(length=6, background=nord_colours[0]),
 
-                widget.GroupBox(background=colours[0], highlight_method="line", highlight_color=colours[2], foreground=colours[2]),
+                widget.GroupBox(background=nord_colours[0], highlight_method="line", highlight_color=nord_colours[2], foreground=nord_colours[2]),
                 widget.Prompt(),
                 #widget.WindowName(background="#434C5E"),
                 widget.Moc(background="BF616A", padding=100),
@@ -188,27 +207,27 @@ screens = [
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.Systray(background=colours[0] + "00"),
+                widget.Systray(background=nord_colours[0] + "00"),
 
                 widget.Spacer(),
 
-                widget.NetGraph(background=colours[0], foreground=colours[6], graph_color=colours[6], line_width=2, border_width=1, border_color=colours[6]),
-                widget.TextBox("|", background=colours[0], foreground=colours[14]),
+                widget.NetGraph(background=nord_colours[0], foreground=nord_colours[6], graph_color=nord_colours[6], line_width=2, border_width=1, border_color=nord_colours[6]),
+                widget.TextBox("|", background=nord_colours[0], foreground=nord_colours[6]),
 
-                widget.PulseVolume(background=colours[0], foreground=colours[5]),
-                widget.TextBox("|", background=colours[0], foreground=colours[14]),
+                widget.PulseVolume(background=nord_colours[0], foreground=nord_colours[15]),
+                widget.TextBox("|", background=nord_colours[0], foreground=nord_colours[6]),
 
-                widget.CPU(format="CPU[{freq_current}GHz {load_percent}%]", background=colours[0], foreground=colours[4]),
-                widget.Memory(measure_mem="G", background=colours[0], format='[{MemUsed: .0f}{mm}/{MemTotal: .0f}{mm}]', foreground=colours[3]),
-                widget.TextBox("|", background=colours[0], foreground=colours[14]),
+                widget.CPU(format="CPU[{freq_current}GHz {load_percent}%]", background=nord_colours[0], foreground=nord_colours[14]),
+                widget.Memory(measure_mem="G", background=nord_colours[0], format='[{MemUsed: .0f}{mm}/{MemTotal: .0f}{mm}]', foreground=nord_colours[13]),
+                widget.TextBox("|", background=nord_colours[0], foreground=nord_colours[6]),
                 
-                widget.Clock(format='%Y-%m-%d %a %I:%M %p', background=colours[0], foreground=colours[2]),
-                widget.TextBox("|", background=colours[0], foreground=colours[14]),
+                widget.Clock(format='%Y-%m-%d %a %I:%M %p', background=nord_colours[0], foreground=nord_colours[12]),
+                widget.TextBox("|", background=nord_colours[0], foreground=nord_colours[6]),
 
-                widget.QuickExit(background=colours[0], foreground=colours[1]),
-                widget.Spacer(length=6, background=colours[0]),
+                widget.QuickExit(background=nord_colours[0], foreground=nord_colours[11]),
+                widget.Spacer(length=6, background=nord_colours[0]),
             ],
-            32, margin=[10, 10, 0, 10], border_width=10, background="#434C5E00"
+            28, margin=[0, 0, 0, 0], border_width=0, background="#434C5E00"
         ),
     ),
 ]
